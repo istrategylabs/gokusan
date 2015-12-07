@@ -13,3 +13,10 @@ def create_cloudfront_distro(bucket_name):
 
 def invalidate_cache(cloudfront_distro):
     pass
+
+class Config(object):
+
+    def __init__(self, aws_key, aws_secret, bucket_name):
+        self.aws_key = aws_key
+        self.aws_secret = aws_secret
+        self.bucket_name = bucket_name

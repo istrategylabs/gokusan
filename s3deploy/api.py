@@ -1,9 +1,7 @@
 import os
 import yaml
 
-
-def read_config():
-    print(contents)
+from aws_helper import Config
 
 
 def read_config_file():

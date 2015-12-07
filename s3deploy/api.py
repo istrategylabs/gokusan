@@ -13,11 +13,13 @@ def read_config_file():
             contents = yaml.load(f)
             return contents
     except OSError:
-        print("s3Deploy configuration file not found.")
+        print('s3Deploy configuration file not found.')
         sys.exit(0)
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     cfg = read_config_file()
     h = AWSHelper(**cfg)
     h.upload_files_to_s3('./test_files')
-    print("Deploy complete!")
+    print('Configuring bucket website...')
+    h.setup_bucket_site()
+    print('Deploy complete!')

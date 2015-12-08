@@ -9,7 +9,7 @@
 
 ## Usage
 
-First, create a gokusan.yml file in the root of the repository you want to deploy. Add your provided AWS credentials to it...
+First, create a gokusan.yml file in the root of the repository you want to deploy. *Please DO NOT commit this file to your repository*. Add your provided AWS credentials to it...
 
 ```
 s3_bucket: '...'
@@ -19,6 +19,14 @@ cloudfront_distribution_id: '...' # (optional)
 ```
 
 1. Run `gokusan <build directory>` where "build directory" is the directory containing the built files to upload to s3
+
+## Requirements
+
+Gokusan makes two assumptions about your project. Eventually, you may be able to customize these assumptions, but for now they stand as follows:
+
+1. Each project must have an `index.html`
+1. Each project must have a `404.html` page that acts as the default "error" page
+
 
 ## Features
 

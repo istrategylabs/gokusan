@@ -1,12 +1,12 @@
 from setuptools import setup, find_packages
 
 setup(
-    name='s3deploy',
+    name='gokusan',
     version='0.0.1',
     author='Julian Gindi',
     author_email='julian@isl.co',
 
-    url='https://github.com/istrategylabs/s3deploy',
+    url='https://github.com/istrategylabs/gokusan',
     license='LGPL',
     description='A lightweight s3 deployment system for static sites',
     long_description=__doc__,
@@ -16,7 +16,7 @@ setup(
     scripts=[],
     entry_points={
         'console_scripts': [
-            's3deploy = s3deploy.cli:main',
+            'gokusan = gokusan.cli:main',
         ]
     },
 
@@ -24,9 +24,6 @@ setup(
         'boto3 >= 1.2.2',
         'PyYAML >= 3.11',
     ],
-    # extras_require={
-    #     'yaml': ['pyyaml', ]
-    # },
     include_package_data=True,
     zip_safe=False,
     test_suite='nose.collector',

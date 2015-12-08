@@ -2,6 +2,11 @@
 
 ![goku](http://vignette3.wikia.nocookie.net/dragonballfanon/images/5/54/KidGoku.jpg)
 
+## Installation
+
+1. Grab the source
+1. `cd` into the source and run `python setup.py install`
+
 ## Usage
 
 First, create a gokusan.yml file in the root of the repository you want to deploy. Add your provided AWS credentials to it...
@@ -28,3 +33,4 @@ cloudfront_distribution_id: '...' # (optional)
 - Check if folder contains index.html
 - Automatically create and associate cloudfront distribution
 - Automatically create iAm credentials and policies
+- Automate bucket creation

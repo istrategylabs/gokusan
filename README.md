@@ -9,7 +9,7 @@
 
 ## Usage
 
-First, create a gokusan.yml file in the root of the repository you want to deploy. *Please DO NOT commit this file to your repository*. Add your provided AWS credentials to it...
+First, create a gokusan.yml file in the root of the repository you want to deploy. **Please DO NOT commit this file to your repository**. Add your provided AWS credentials to it...
 
 ```
 s3_bucket: '...'

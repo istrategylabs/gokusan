@@ -1,2 +1,16 @@
+# Python Generated Goodies
+/build/
+/dist/
+/MANIFEST
+/*.egg-info/
+
+
+# Other
 s3Deploy.cfg
+
+# Temps
+*.DS_Store
+
+# Generated
 __pycache__
+*.py[cod]

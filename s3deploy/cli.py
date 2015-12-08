@@ -2,7 +2,7 @@ import sys
 import os
 import yaml
 
-from aws_helper import AWSHelper
+from .aws_helper import AWSHelper
 
 
 def read_config_file():
@@ -16,7 +16,7 @@ def read_config_file():
         print('s3Deploy configuration file not found.')
         sys.exit(0)
 
-if __name__ == '__main__':
+def main():
     cfg = read_config_file()
     h = AWSHelper(**cfg)
     h.upload_files_to_s3('./test_files')

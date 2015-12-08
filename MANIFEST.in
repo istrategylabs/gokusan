@@ -1,5 +1,2 @@
-include *.rst *.txt LICENSE tox.ini docs/Makefile .coveragerc conftest.py
-recursive-include tests *.py
-recursive-include docs *.rst
-recursive-include docs *.py
-prune docs/_build
+include README.*
+include LICENSE

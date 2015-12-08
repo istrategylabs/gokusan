@@ -27,7 +27,8 @@ class AWSHelper(object):
             for file in files:
                 file_path = "{}/{}".format(path_to_files, file)
                 print("Uploading {}............".format(file_path))
-                s3.Object(self.s3_bucket, file).put(Body=open(file_path, 'rb'))
+                obj = s3.Object(self.s3_bucket, file)
+                obj.put(Body=open(file_path, 'rb'), ContentType='text/html')
         # Make files public so website will work correctly
         bucket = s3.Bucket(self.s3_bucket)
         self.setup_bucket_policy()

@@ -23,10 +23,10 @@ cloudfront_distribution_id: '...' # (optional)
 - Configures s3 bucket as static website
 - Reads credentials and bucket name from yaml file
 - Configures bucket policy to allow public access
+- Pass filename to upload as website
 
 ## ToDo
 
-- Pass filename to upload as website
 - Check if folder contains index.html
 - Automatically create and associate cloudfront distribution
 - Automatically create iAm credentials and policies

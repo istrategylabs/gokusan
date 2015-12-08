@@ -19,7 +19,12 @@ def read_config_file():
 def main():
     cfg = read_config_file()
     h = AWSHelper(**cfg)
-    h.upload_files_to_s3('./test_files')
+    try:
+        dir = sys.argv[1]
+    except:
+        print('Please specify a valid directory!')
+        sys.exit(0)
+    h.upload_files_to_s3('./' + dir)
     print('Configuring bucket website...')
     h.setup_bucket_site()
     print('Deploy complete!')

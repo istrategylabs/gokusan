@@ -13,9 +13,7 @@ s3_secret_key: '...'
 cloudfront_distribution_id: '...' # (optional)
 ```
 
-1. Run `gokusan build` to run a 'sample' build to make sure everything works correctly.
-1. Run `gokusan deploy` to deploy your site to S3.
-1. Run `gokusan open` to open your deployed site in a browser window.
+1. Run `gokusan <build directory>` where "build directory" is the directory containing the built files to upload to s3
 
 ## Features
 

@@ -3,12 +3,12 @@ import json
 import botocore
 import boto3
 from boto3.session import Session
+from subprocess import call
 
 
 class AWSHelper(object):
 
-    def __init__(self, s3_access_key, s3_secret_key,
-                 s3_bucket, cloudfront_distribution_id):
+    def __init__(self, s3_access_key, s3_secret_key, s3_bucket):
         self.s3_access_key = s3_access_key
         self.s3_secret_key = s3_secret_key
         self.s3_bucket = s3_bucket
@@ -22,13 +22,16 @@ class AWSHelper(object):
     def upload_files_to_s3(self, path_to_files):
         s3 = self.session.resource('s3')
         client = s3.meta.client
-        # Loop over each file in the parent and upload individually
-        for root,dirs,files in os.walk(path_to_files):
-            for file in files:
-                file_path = "{}/{}".format(path_to_files, file)
-                print("Uploading {}............".format(file_path))
-                obj = s3.Object(self.s3_bucket, file)
-                obj.put(Body=open(file_path, 'rb'), ContentType='text/html')
+        bucket_string = "s3://{}".format(self.s3_bucket)
+        cred_string = "AWS_ACCESS_KEY_ID={} AWS_SECRET_ACCESS_KEY={} ".format(
+            self.s3_access_key,
+            self.s3_secret_key
+        )
+        command_string = cred_string + \
+                "aws s3 sync " + \
+                path_to_files + \
+                " " + bucket_string
+        os.system(command_string)
         # Make files public so website will work correctly
         bucket = s3.Bucket(self.s3_bucket)
         self.setup_bucket_policy()

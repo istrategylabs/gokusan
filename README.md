@@ -12,10 +12,10 @@
 First, create a gokusan.yml file in the root of the repository you want to deploy. **Please DO NOT commit this file to your repository**. Add your provided AWS credentials to it...
 
 ```
-s3_bucket: '...'
-s3_access_key: '...'
-s3_secret_key: '...'
-cloudfront_distribution_id: '...' # (optional)
+access_key: '...'
+secret_key: '...'
+bucket: '...'
+cloudfront_distribution_id: '...' # (currently unsupported)
 ```
 
 1. Run `gokusan <build directory>` where "build directory" is the directory containing the built files to upload to s3

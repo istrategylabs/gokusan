@@ -4,6 +4,8 @@
 /MANIFEST
 /*.egg-info/
 
+test/
+
 
 # Other
 gokusan.cfg

@@ -1,30 +1,28 @@
-import sys
 import os
-import yaml
+import click
 
-from .aws_helper import AWSHelper
+from .core import load_config
+from .aws_helper import AWSClient
 
 
-def read_config_file():
-    current_dir = os.getcwd()
-    config_path = current_dir + '/gokusan.cfg'
-    try:
-        with open(config_path, 'r') as f:
-            contents = yaml.load(f)
-            return contents
-    except OSError:
-        print('gokusan configuration file not found.')
-        sys.exit(0)
+@click.command()
+@click.argument('path', type=click.Path(exists=True))
+def deploy(path):
 
-def main():
-    cfg = read_config_file()
-    h = AWSHelper(**cfg)
-    try:
-        dir = sys.argv[1]
-    except:
-        print('Please specify a valid directory!')
-        sys.exit(0)
-    h.upload_files_to_s3('./' + dir)
-    print('Configuring bucket website...')
-    h.setup_bucket_site()
-    print('Deploy complete!')
+    path = os.path.abspath(path)
+    cfg = load_config(path)
+    aws = AWSClient(**cfg)
+
+    click.echo('Syncing project...')
+    aws.s3.sync(path)
+    aws.s3.configure_policy()
+
+    click.echo('Configuring website...')
+    aws.s3.configure_site()
+
+    click.echo('Deploy complete!')
+    click.echo(f'http://{aws.bucket}.s3-website-{aws.region}.amazonaws.com')
+
+
+if __name__ == '__main__':
+    deploy()
